@@ -1,0 +1,43 @@
+version: '3.3'
+services:
+  php74-symfony5:
+    container_name: php74-symfony5
+    build:
+      context: ./php74
+      dockerfile: Dockerfile      
+    restart: always
+    volumes:
+      - "./app:/var/www/app"
+      - "./data:/var/www/data"
+      - "spool:/var/www/app/spool/"
+    env_file:
+      - .env
+
+  nginx-webserver:
+    container_name: nginx-webserver
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile   
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nginx-webserver.entrypoints=http"            
+      - "traefik.http.routers.nginx-webserver.rule=Host(`${TRAEFIK_HOST_API_01}`)"
+    # ports:
+    #   - "8080:80"
+    env_file:
+      - .env
+    environment:
+      - PHP_UPSTREAM_CONTAINER=php74-symfony5
+    volumes:
+      - "./app:/var/www/app"
+    depends_on:
+      - php74-symfony5
+
+volumes:
+  spool: ~
+
+networks:
+  default:
+    external:
+      name: ${DOCKER_NETWORK}

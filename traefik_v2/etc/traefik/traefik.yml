@@ -1,0 +1,21 @@
+# Logs
+log:
+    level: WARN
+    filePath: "/var/log/traefik/traefik.log"
+
+accessLog:
+    filePath: "/var/log/traefik/access.log"
+
+# Enable API access
+api:
+    insecure: true
+
+providers:
+
+    # Enable Docker provider
+    docker:
+        exposedByDefault: false
+
+    # Enable static providers
+    file:
+        directory: /etc/traefik/config

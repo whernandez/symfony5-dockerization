@@ -1,0 +1,21 @@
+version: "3"
+services:
+  mysql:
+    container_name: mysql
+    restart: always
+    image: mariadb:10.5
+    env_file: .env
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_HOST: "%"
+    volumes:
+      - mysql_db:/var/lib/mysql
+volumes:
+  mysql_db:
+
+networks:
+  default:
+    external:
+      name: docker_default

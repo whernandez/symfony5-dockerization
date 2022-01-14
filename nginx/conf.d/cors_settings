@@ -1,0 +1,44 @@
+# CORS SUPPORT
+    if ($request_method = 'OPTIONS') {
+        add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Methods' 'GET,POST,PUT,PATCH,OPTIONS,DELETE';
+        #
+        # Custom headers and headers various browsers *should* be OK with but aren't
+        #
+        add_header 'Access-Control-Allow-Headers' 'Authorization,X-API-USER,X-API-PASS,X-API-AUTH-REQUEST,X-API-TOKEN,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Access-Control-Allow-Origin';
+        add_header 'Access-Control-Expose-Headers' 'API_TOKEN,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Access-Control-Allow-Origin';
+        add_header 'Access-Control-Max-Age' 1728000;
+        add_header 'Content-Type' 'text/plain; charset=utf-8';
+        add_header 'Content-Length' 0;
+        return 204;
+     }
+     if ($request_method = 'POST') {
+        add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Methods' 'GET,POST,PUT,PATCH,OPTIONS,DELETE';
+        add_header 'Access-Control-Allow-Headers' 'X-API-USER, X-API-PASS,X-API-AUTH-REQUEST,X-API-TOKEN,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range';
+        add_header 'Access-Control-Expose-Headers' 'API_TOKEN,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Access-Control-Allow-Origin';
+     }
+     if ($request_method = 'GET') {
+        add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Methods' 'GET,POST,PUT,PATCH,OPTIONS,DELETE';
+        add_header 'Access-Control-Allow-Headers' 'X-API-USER, X-API-PASS,X-API-AUTH-REQUEST,X-API-TOKEN,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range';
+        add_header 'Access-Control-Expose-Headers' 'API_TOKEN,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range,Access-Control-Allow-Origin';
+     }
+     if ($request_method = 'PUT') {
+        add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Methods' 'GET,POST,PUT,PATCH,OPTIONS,DELETE';
+        add_header 'Access-Control-Allow-Headers' 'X-API-USER, X-API-PASS,X-API-AUTH-REQUEST,X-API-TOKEN,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range';
+        add_header 'Access-Control-Expose-Headers' 'API_TOKEN,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Rang,Range';
+     }
+     if ($request_method = 'PATCH') {
+        add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Methods' 'GET,POST,PUT,PATCH,OPTIONS,DELETE';
+        add_header 'Access-Control-Allow-Headers' 'X-API-USER, X-API-PASS,X-API-AUTH-REQUEST,X-API-TOKEN,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range';
+        add_header 'Access-Control-Expose-Headers' 'API_TOKEN,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Rang,Range,Access-Control-Allow-Origin';
+     }
+     if ($request_method = 'DELETE') {
+        add_header 'Access-Control-Allow-Origin' '*';
+        add_header 'Access-Control-Allow-Methods' 'GET,POST,PUT,PATCH,OPTIONS,DELETE';
+        add_header 'Access-Control-Allow-Headers' 'X-API-USER, X-API-PASS,X-API-AUTH-REQUEST,X-API-TOKEN,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range';
+        add_header 'Access-Control-Expose-Headers' 'API_TOKEN,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Rang,Range,Access-Control-Allow-Origin';
+     }
