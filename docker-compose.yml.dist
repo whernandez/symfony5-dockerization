@@ -1,9 +1,9 @@
-version: '3.3'
+version: '3.5'
 services:
-  php74-symfony5:
-    container_name: php74-symfony5
+  php80-symfony5:
+    container_name: php80-symfony5
     build:
-      context: ./php74
+      context: ./php80
       dockerfile: Dockerfile      
     restart: always
     volumes:
@@ -28,11 +28,11 @@ services:
     env_file:
       - .env
     environment:
-      - PHP_UPSTREAM_CONTAINER=php74-symfony5
+      - PHP_UPSTREAM_CONTAINER=php80-symfony5
     volumes:
       - "./app:/var/www/app"
     depends_on:
-      - php74-symfony5
+      - php80-symfony5
 
 volumes:
   spool: ~
